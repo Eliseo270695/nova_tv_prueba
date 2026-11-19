@@ -16,6 +16,9 @@ jobs:
         run: |
           base64 -d novafi-cinema-tv-source.tar.xz.b64 | tar -xJf -
           test -f app/src/main/java/mx/novafi/cinema/MainActivity.java
+      - name: Corregir referencia al botón en el piloto Java
+        run: |
+          sed -i 's/connect.setEnabled(false);/v.setEnabled(false);/g; s/connect.setEnabled(true);/v.setEnabled(true);/g' app/src/main/java/mx/novafi/cinema/MainActivity.java
       - name: Generar iconos temporales NOVAFI
         shell: bash
         run: |
